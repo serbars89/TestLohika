@@ -35,8 +35,7 @@ public class SortWords {
         creatingWordsMap();
         for (Map.Entry entry : uniqueWordsAndCount.entrySet()) {
             lp.add(new Pair((Integer)entry.getValue(), (String) entry.getKey()));
-//            System.out.println("----------------------------------------------");
-//            System.out.println("Key: " + entry.getKey() + " --- "+ " Value: " + entry.getValue());
+
             if((Integer)entry.getValue() == 1)
                 n++;
         }
