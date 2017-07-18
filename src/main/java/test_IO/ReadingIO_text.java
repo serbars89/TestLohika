@@ -18,23 +18,24 @@ public class ReadingIO_text {
 
         try {
             readr = new BufferedReader(new InputStreamReader( new FileInputStream(file), "UTF-8"));
-            strBuff = new StringBuffer();
-            resolverWords = new ResolverWords();
-            int chr = 0;
-            stLnk = new LinkedList<String>();
-            while ((chr = readr.read())>1 ){
-//                System.out.print((char) chr);
+              strBuff = new StringBuffer();
+              resolverWords = new ResolverWords();
 
-                if (resolverWords.rezolv((char) chr) == false){
-                        strBuff.append((char) chr);
-                }
-                else{
+
+                int chr = 0;
+                stLnk = new LinkedList<String>();
+                while ((chr = readr.read())>1 ){
+
+                  if (resolverWords.rezolv((char) chr) == false){
+                          strBuff.append((char) chr);
+                  }
+                  else{
                         String ss = strBuff.toString().toUpperCase().trim();
-                        if(!ss.isEmpty()){
-                            stLnk.add(ss);
-                         }
-                    strBuff = new StringBuffer();
-                }
+                         if(!ss.isEmpty()){
+                              stLnk.add(ss);
+                            }
+                        strBuff = new StringBuffer();
+                  }
             }
 
         } catch (UnsupportedEncodingException e) {

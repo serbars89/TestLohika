@@ -1,22 +1,25 @@
 package test_IO;
 
+import junit.framework.Assert;
 import org.junit.Test;
+
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 /**
  * Created by Ser on 11.05.2017.
  */
 public class TestResolverWords {
 
+    ResolverWords resolverWords = new ResolverWords();
     @Test
-    public void test_getCuurentLocale_1(){
-//        String str = getLocal.getCurrentLocale();
-//        Assert.assertFalse("Object get successful", isEmpty(str));
+    public void TestResolverWords_1(){
+        char c = ' ';
+        Assert.assertTrue("Object successful", resolverWords.rezolv(c));
     }
 
     @Test
-    public void test_getCuurentLocale_2(){
-//        String str = getLocal.getCurrentLocale();
-//        int count = str.length();
-//        Assert.assertEquals("Test Ok", count , 5);
+    public void TestResolverWords_2(){
+        char c = '5';
+        Assert.assertFalse("Object successful", resolverWords.rezolv(c));
     }
 }
