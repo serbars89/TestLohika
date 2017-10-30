@@ -3,7 +3,7 @@ package test_IO;
 /**
  * Created by Ser on 10.05.2017.
  */
-public class Pair implements Comparable<Pair>{
+public class Pair implements Comparable<Pair> {
 
     private Integer i;
     private String s;
@@ -28,7 +28,7 @@ public class Pair implements Comparable<Pair>{
 
     @Override
     public int compareTo(Pair o) {
-        return o.getI() - i ;
+        return o.getI() - i;
     }
 
     @Override

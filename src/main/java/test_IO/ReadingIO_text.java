@@ -2,6 +2,7 @@ package test_IO;
 
 import java.io.*;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Ser on 08.05.2017.
@@ -9,33 +10,32 @@ import java.util.LinkedList;
 public class ReadingIO_text {
 
     ResolverWords resolverWords;
-
-  public LinkedList<String> stLnk;
+    public List<String> listWords;
+    StringBuffer bufferChars;
+    int countChar;
 
     public void readFrom_file(String file) {
-        StringBuffer strBuff = null;
+        bufferChars = null;
         Reader readr = null;
 
         try {
-            readr = new BufferedReader(new InputStreamReader( new FileInputStream(file), "UTF-8"));
-              strBuff = new StringBuffer();
-              resolverWords = new ResolverWords();
+            readr = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
+            bufferChars = new StringBuffer();
+            resolverWords = new ResolverWords();
 
+            countChar = 0;
+            listWords = new LinkedList<String>();
+            while ((countChar = readr.read()) > 1) {
 
-                int chr = 0;
-                stLnk = new LinkedList<String>();
-                while ((chr = readr.read())>1 ){
-
-                  if (resolverWords.rezolv((char) chr) == false){
-                          strBuff.append((char) chr);
-                  }
-                  else{
-                        String ss = strBuff.toString().toUpperCase().trim();
-                         if(!ss.isEmpty()){
-                              stLnk.add(ss);
-                            }
-                        strBuff = new StringBuffer();
-                  }
+                if (resolverWords.rezolv((char) countChar) == false) {
+                    bufferChars.append((char) countChar);
+                } else {
+                    String ss = bufferChars.toString().toUpperCase().trim();
+                    if (!ss.isEmpty()) {
+                        listWords.add(ss);
+                    }
+                    bufferChars = new StringBuffer();
+                }
             }
 
         } catch (UnsupportedEncodingException e) {
@@ -45,7 +45,7 @@ public class ReadingIO_text {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (readr != null){
+            if (readr != null) {
                 try {
                     readr.close();
                 } catch (IOException e) {

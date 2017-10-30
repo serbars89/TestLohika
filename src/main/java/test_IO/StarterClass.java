@@ -5,8 +5,7 @@ package test_IO;
  */
 public class StarterClass {
 
-    public static void main( String[] args )
-    {
+    public static void main(String[] args) {
 
         ReadingIO_text readingIO_text = new ReadingIO_text();
         readingIO_text.readFrom_file("d:\\test\\new2_2.txt");
